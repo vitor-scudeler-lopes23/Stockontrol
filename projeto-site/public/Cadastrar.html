@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <link rel="stylesheet" href="CSS/Cadastrar.css">
+    <link rel="icon" href="./Imagens/LogoStockontrol.png" sizes="">
+    <title>Stockontrol</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <a href="index.html"><img src="Imagens/Stockontrol.png" class="Logo"></a>
+            <div class="naveg">
+                <!-- ul>li*5>a -->
+                <ul>
+                    <li><a class="links links_color esquerda" href="index.html#sobre">Sobre</a></li>
+                    <li><a class="links links_color" href="index.html#produto">Produto</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="fundo">
+        <div class="caixa">
+            <h2>Crie sua conta</h2>
+            <form id="form_cadastro" method="post" onsubmit="return verificar(), cadastrar()"> 
+                <label><b><span class="texto_caixa">Nome empresa</span></b>
+                <input name="nome" class="caixas" id="usuario" type="text" placeholder="NOME DA EMPRESA">
+                </label>
+                <label><b><span class="texto_caixa">Digite seu e-mail</span></b>
+                    <input name="login" class="caixas" id="email" type="text" placeholder="EX: faleconosco@gmail.com">
+                </label>
+                <label><b><span class="texto_caixa">Digite seu cnpj </span></b>
+                    <input name="cnpj" class="caixas" id="cnpj" type="text" placeholder="EX: 00.000.000/0000-00">
+                </label>
+                <label><b><span class="texto_caixa">Digite seu celular</span></b>
+                    <input name="telefone" class="caixas" id="celular" type="text" placeholder="EX: (00) 00000-0000">
+                </label>
+                <label><b><span class="texto_caixa">Digite o endereço</span></b>
+                    <input name="endereco" class="caixas" id="endereco" type="text" placeholder="DIGITE O ENDEREÇO">
+                </label>
+                <label><b><span class="texto_caixa">Digite o número do endereço</span></b>
+                    <input name="Nuendereco" class="caixas" id="numero_endereco" type="text"
+                        placeholder="DIGITE O NÚMERO DO ENDEREÇO">
+                </label>
+                <label><b><span class="texto_caixa">Digite sua senha</span></b>
+                    <input name="senha" class="caixas" id="senha" type="password" placeholder="DIGITE SUA SENHA">
+                </label>
+                <label><b><span class="texto_caixa">Confirme sua senha</span></b>
+                    <input class="caixas" id="confirma_senha" type="password"
+                        placeholder="CONFIRME SUA SENHA">
+                </label>
+                <button class="b_criar" type="submit"><b>CRIAR CONTA</b></button>
+            </form>
+            <div>
+                <span class="entrar esquerdaC">Já tem uma conta ? </span><a class="entrar entrar_cor"
+                    href="Login.html">ENTRAR NA CONTA</a>
+                <div class="meio"></div>
+                <span class="entrar esquerdaC1">Não consegue fazer o cadastro ? </span><a class="entrar entrar_cor"
+                    href="index.html#problema">CLIQUE AQUI</a>
+            </div>
+        </div>
+        <div class="error" id="texto" style="display: none;"></div>
+    </div>
+    <div class="barra"></div>
+    <div class="rodape">
+        <ul>
+            <li class="textoRodape esquerdaCopy"><b>&copy;Inventory Control 2020</b></li>
+            <li class="textoRodape esquerdaR"><b>Entre em contato conosco</b></li>
+            <li class="textoRodape"><b>Telefone: (11)*****-****</b></li>
+            <li class="textoRodape"><b>E-mail: faleconosco@Inventorycontrol.com.br</b></li>
+            <a href=""><img src="Imagens/face.png" class="RSocial direita"></a>
+            <a href=""><img src="Imagens/tw.png" class="RSocial"></a>
+            <a href=""><img src="Imagens/insta.png" class="RSocial"></a>
+        </ul>
+
+    </div>
+</body>
+
+</html>
+
+
+
+<script>
+function cadastrar() {
+        // aguardar();
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+            
+            if (response.ok) {
+
+                window.location.href='Login.html';
+
+            } else {
+
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                    div_erro.innerHTML = resposta;
+                });
+                // finalizar_aguardar();
+            }
+        });
+
+        return false;
+    }
+
+
+
+    let erros = [];
+    function verificar() {
+        event.preventDefault();
+
+        let login = (usuario.value);
+        login = login.trimStart().trimEnd();
+
+        let e_mail = (email.value);
+        e_mail = e_mail.trimStart().trimEnd();
+
+        let cnpj1 = (cnpj.value);
+        cnpj1 = cnpj1.trimStart().trimEnd();
+
+        let celular1 = (celular.value);
+        celular1 = celular1.trimStart().trimEnd();
+
+        let endereco1 = (endereco.value);
+        endereco1 = endereco1.trimStart().trimEnd();
+
+        let n_endereco = (numero_endereco.value);
+        n_endereco = n_endereco.trimStart().trimEnd();
+
+        let senha1 = (senha.value);
+        senha1 = senha1.trimStart().trimEnd();
+
+        let c_senha = (confirma_senha.value);
+        c_senha = c_senha.trimStart().trimEnd();
+        texto.innerHTML = '';
+        erros = []; // interpolação
+
+        if (login.length == 0) {
+            erros.push('Nome empresa inválido')
+        }
+
+        if (e_mail.indexOf('@') == -1 || e_mail.indexOf('.com') == -1 || !e_mail) {
+            erros.push('E-mail inválido')
+        }
+
+        if (cnpj1.length < 18) {
+            erros.push('CPNJ inválido')
+        }
+
+        if (celular1.length < 14){
+            erros.push('Celular inválido')
+        }
+
+        if (endereco1.length == 0) {
+            erros.push('Endereço inválido')
+        }
+
+        if (n_endereco.length == 0) {
+            erros.push('Número do endereço inválido')
+        }
+
+        if (senha1.length < 5) {
+            erros.push('Senha inválida - minimo 5 caracteres')
+        }
+
+        if (c_senha.length == 0 || c_senha.length != senha1.length){
+            erros.push('Confirmação de senha inválida')
+        }
+
+        if (erros.length > 0) {
+            texto.style.display = 'block'
+        }
+
+            for (let contador = 0; contador < erros.length; contador++) {
+                texto.innerHTML += `${erros[contador]}<br>`
+            }
+
+            if (erros.length == 0) {
+                texto.style.display = 'none'
+                alert(`Obrigado por se cadastrar ${usuario.value}, verifique seu e-mail para a confirmação`)
+                // window.location.assign("Login.html")
+
+                for (let contador = 0; contador < erros.length; contador++) {
+                    texto.innerHTML += `${erros[contador]}<br>`
+                }
+            }
+        }
+
+
+
+</script>
+<script>
+    // function mascara(i, t) {
+
+    //     var v = i.value;
+
+    //     if (isNaN(v[v.length - 1])) {
+    //         i.value = v.substring(0, v.length - 1);
+    //         return;
+    //     }
+
+    //     if (t == "cnpj") {
+    //         i.setAttribute("maxlength", "18");
+    //         if (v.length == 2 || v.length == 6) i.value += ".";
+    //         if (v.length == 10) i.value += "/";
+    //         if (v.length == 15) i.value += "-";
+    //     }
+
+    //     if (t == "celular") {
+    //         i.setAttribute("maxlength", "10");
+    //         if (i.value == 0) i.value += "(";
+    //         if (v.length == 2) i.value += ")";
+    //         if (v.length == 5) i.value += "-";
+    //     }
+    // }
+
+
+
+</script>
+<script type="text/javascript">
+        $("#numero_endereco").mask("000")
+        $("#celular").mask("(00)00000-0000");
+        $("#cnpj").mask("00.000.000/0000-00");
+</script>

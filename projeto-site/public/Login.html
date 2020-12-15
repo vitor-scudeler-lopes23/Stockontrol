@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/Login.css">
+    <link rel="icon" href="./Imagens/LogoStockontrol.png" sizes="">
+    <title>Stockontrol</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <a href="index.html"><img src="Imagens/Stockontrol.png" class="Logo"></a>
+            <div class="naveg">
+                <!-- ul>li*5>a -->
+                <ul>
+                    <li><a class="links links_color esquerda" href="index.html#sobre">Sobre</a></li>
+                    <li><a class="links links_color"href="index.html#produto">Produto</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="fundo">
+        <div class="caixa">
+            <h2>Entrar na conta</h2>
+            <form id="form_login" method="post" onsubmit="return verificar(), entrar()">
+                <label><b><span class="texto_caixa">Digite seu email</span></b>
+                    <input class="caixas" id="usuario" name="login" type="text" placeholder="DIGITE SEU EMAIL">
+                </label>
+                <label><b><span class="texto_caixa">Digite sua senha</span></b>
+                    <input class="caixas" id="senhas" name="senha" type="password" placeholder="DIGITE SUA SENHA">
+                </label>
+                <button class="b_entrar">Entrar</button>
+            </form>
+            <div>
+                <span class="criar esquerdaC">Não tem uma conta ? </span><a class="criar criar_cor"
+                    href="Cadastrar.html">CRIAR CONTA</a>
+                <div class="meio"></div>
+                <span class="criar esquerdaC1">Não consegue fazer login ? </span><a class="criar criar_cor"
+                    href="index.html#problema">CLIQUE AQUI</a>
+            </div>
+        </div>
+        <div class="error" id="texto" style="display: none;"></div>
+    </div>
+    <div class="barra"></div>
+    <div class="rodape">
+        <ul>
+            <li class="textoRodape esquerdaCopy"><b>&copy;Inventory Control 2020</b></li>
+            <li class="textoRodape esquerdaR"><b>Entre em contato conosco</b></li>
+            <li class="textoRodape"><b>Telefone: (11)*****-****</b></li>
+            <li class="textoRodape"><b>E-mail: faleconosco@Inventorycontrol.com.br</b></li>
+            <a href=""><img src="Imagens/face.png" class="RSocial direita"></a>
+            <a href=""><img src="Imagens/tw.png" class="RSocial"></a>
+            <a href=""><img src="Imagens/insta.png" class="RSocial"></a>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    erros = [];
+    function entrar() {
+        var formulario = new URLSearchParams(new FormData(form_login));
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+
+                    sessionStorage.login_usuario_meuapp = json.login;
+                    sessionStorage.nome_usuario_meuapp = json.nome;
+
+                    window.location.href = 'CadastroProdutos.html';
+                });
+
+            } else {
+
+                alert('Erro de login!');
+
+                response.text().then(texto => {
+                    console.error(texto);
+                    // finalizar_aguardar(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+
+
+
+    function verificar() {
+        event.preventDefault();
+
+        let e_mail = (usuario.value);
+        let senha1 = (senhas.value);
+        texto.innerHTML = '';
+        erros = [];
+
+        if (e_mail.indexOf('@') == -1 || e_mail.indexOf('.com') == -1 || !e_mail) {
+            erros.push('E-mail inválido')
+        }
+        if (senha1.length < 5) {
+            erros.push('Senha inválida')
+        }
+        if (erros.length > 0) {
+            texto.style.display = 'block'
+
+            for (let contador = 0; contador < erros.length; contador++) {
+                texto.innerHTML += `${erros[contador]}<br>`
+            }
+        }
+        if (erros.length == 0) {
+            texto.style.display = 'none'
+            // window.location.href = 'Cliente.html';
+
+            for (let contador = 0; contador < erros.length; contador++) {
+                texto.innerHTML += `${erros[contador]}<br>`
+            }
+        } else {
+            entrar()
+        }
+    }
+    
+
+</script>

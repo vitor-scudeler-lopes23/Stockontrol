@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <link rel="stylesheet" href="CSS/CadastroProduto.css">
+    <link rel="stylesheet" href="CSS/Responsivo.css">
+    <link rel="icon" href="./Imagens/LogoStockontrol.png" sizes="">
+    <script src="js/menu.js"></script>
+    <title>Stockontrol</title>
+</head>
+<body>
+    <div class="sidebar" id="mySidebar">
+        <a href="#" class="closebtn" onclick="closeNav()">x</a>
+        <a href="index2.html">Home</a>
+        <!-- <a href="CadastroProdutos.html">Cadastro produtos</a>
+        <a href="#">Relatórios</a> -->
+        <a href="index2.html#problema">Contato</a>
+      </div>
+      <div class="cabecalho">
+          <a class="openbtn" onclick="openNav()">☰</a>
+          <a href="index.html" class="sair">Sair</a>
+      </div>
+      <div class="containerCP">
+          <h2>Movimento produtos</h2>
+            <div class="caixaCP">
+                <form id="form_cadastrop" method="post" onsubmit="return cadastrarp()">
+                    <label><span class="textoCP">Nome produto</span>
+                        <input name="nomep" type="text" class="caixas" id="nomeP" placeholder="Digite o nome do produto">
+                    </label>
+                    <label><span class="textoCP">Tipo Produto</span>
+                        <input name="tipoproduto" type="text" class="caixas" placeholder="Digite a quantidade">
+                    </label>
+                    <label><span class="textoCPQ">Quantidade de produtos</span>
+                        <input name="qtdproduto" type="text" class="caixas" id="quantiP" placeholder="Digite a quantidade">
+                    </label>
+                    <button type="submit" class="btn esquerdaBTN">Adicionar</button>
+                </form>
+            </div>
+            <div class="containerE">
+                <h2>Cadastro estoque</h2>
+                <div class="caixaE">
+                                                                    <!-- verificarEs()    -->
+                    <form id="form_cadastroe" method="post" onsubmit="return cadastrare()">
+                        <label><span class="textoE">Nome estoque</span>
+                            <input name="nomees" type="text" class="caixasE" id="nomeE" placeholder="Digite o nome do estoque">
+                        </label>
+                        <label><span class="textoEE">Endereço do estoque</span>
+                            <input name="enderecoes" type="text" class="caixasE" id="enderecoE" placeholder="Digite o endereço do estoque">
+                        </label>
+                        <label><span class="textoEN">Número do endereço</span>
+                            <input name="nuenderecoes" type="text" class="caixasE" id="numeroE" placeholder="Digite o número do endereço">
+                        </label>
+                        <label><span class="textoEC">Cep do endereço</span>
+                            <input name="cepes" type="text" class="caixasE" id="cepE" placeholder="Digite o cep do endereço">
+                        </label>
+                        <button type="submit" class="btnE">Adicionar estoque</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <table>
+        <tr><td>Last Name:</td><td><input type="text" name="lastname" style="color:black" /></td></tr>
+        <tr><td>First Name:</td><td><input type="text" name="firstname"style="color:black" /></td></tr>
+        <tr><td>Phone:</td><td><input type="text" name="phone" style="color:black" /></td></tr>
+        <tr><td>Email:</td><td><input type="text" name="email" style="color:black" /></td></tr>
+        <tr><td></td><td colspan="2" align="center"><input class="btn btn-primary btn-sm btn-block" type="submit" /></td></tr>
+        <input type=hidden name=mode value=added>
+      </table>
+
+    <div class="barra"></div>
+    <div class="rodape">
+        <ul>
+            <li class="textoRodape esquerdaCopy"><b>&copy;Inventory Control 2020</b></li>
+            <li class="textoRodape esquerdaR"><b>Entre em contato conosco</b></li>
+            <li class="textoRodape"><b>Telefone: (11)*****-****</b></li>
+            <li class="textoRodape"><b>E-mail: faleconosco@Inventorycontrol.com.br</b></li>
+            <a href=""><img src="Imagens/face.png" class="RSocial direita"></a>
+            <a href=""><img src="Imagens/tw.png" class="RSocial"></a>
+            <a href=""><img src="Imagens/insta.png" class="RSocial"></a>
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+function cadastrare() {
+        // aguardar();
+        var formulario = new URLSearchParams(new FormData(form_cadastroe));
+        fetch("/estoque/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+            
+            if (response.ok) {
+
+                alert(`Seu estoque ${nomeE.value} foi cadastrado com sucesso!`);
+
+            } else {
+
+                alert('Erro ao cadastra o estoque!');
+                // response.text().then(function (resposta) {
+                //     div_erro.innerHTML = resposta;
+                // });
+                // finalizar_aguardar();
+            }
+        });
+
+        return false;
+    }
+
+    function cadastrarp() {
+        // aguardar();
+        var formulario = new URLSearchParams(new FormData(form_cadastrop));
+        fetch("/produto/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+            
+            if (response.ok) {
+
+                alert(`Seu produto ${nomeP.value} foi cadastrado com sucesso!`);
+
+            } else {
+
+                alert('Erro ao cadastra o estoque!');
+                // response.text().then(function (resposta) {
+                //     div_erro.innerHTML = resposta;
+                // });
+                // finalizar_aguardar();
+            }
+        });
+
+        return false;
+    }
+
+</script>
+
+<script type="text/javascript">
+    $("#quantiP").mask("0000000");
+    $("#numeroE").mask("000");
+    $("#cepE").mask("00000-000");
+    $("#cnpj").mask("00.000.000/0000-00");
+</script>

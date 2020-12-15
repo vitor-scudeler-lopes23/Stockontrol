@@ -1,0 +1,473 @@
+body{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+@keyframes anm_caixa{
+    0%{
+        top: 0%;
+        opacity: 0%;
+    }
+    100%{
+        top: 30%;
+        opacity: 90%;
+    }
+}
+
+
+/* Cabeçalho a baixo*/
+
+.header{
+    /* margin-top: 2%; */
+    width: 100%;
+    height: 100px;
+    /* border-radius: 20px; */
+    background-color: white;
+    }
+    
+    .Logo{
+        width: 15%;
+        float: left;
+        margin-left: 4%;
+        margin-top: 2%;
+    }
+    
+    .naveg ul{
+        margin: 0 auto;
+    }
+    
+    .naveg ul li{
+        display: inline-block;
+        text-decoration: none;
+        font-size: 25px;
+        margin-left: 2%;
+        margin-top: 2%;
+    }
+    
+    .esquerda{
+        margin-left: 700px;
+    }
+    
+    .links{
+        color: #6E6E6E;
+        text-decoration: none;
+    }
+    
+    .links_color:hover{
+        color: #000000;
+    }
+    
+    .esquerda2{
+        margin-left: 10px ;
+    }
+    /* Cabeçalho a cima */
+
+.fundo{
+    background-image: url("../Imagens/estoque_login_cadastro.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 921px;
+}
+
+    /* Login abaixo */
+
+.caixa h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.texto_caixa{
+    margin-left: 22%;
+    font-size: 15px;
+}
+
+
+.caixa{
+    background-color: #BDBDBD;
+    width: 400px;
+    height: 300px;
+    position: absolute;
+    left: 38%;
+    top: 30%;
+    font-size: 75%;
+    border-radius: 20px;
+    opacity: 90%;
+    animation-name: anm_caixa;
+    animation-duration: 2.5s;
+}
+
+.caixas{
+    width: 200px;
+    border-radius: 7px;
+    margin-left: 20%;
+    padding-left: 23px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+
+}
+
+.b_entrar{
+    width: 100px;
+    height: 30px;
+    margin-top: 6px;
+    margin-bottom: 8px;
+    margin-left: 37%;
+    font-size: 18px;
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+}
+
+.b_entrar:hover{
+    background-color: orange;
+    border-radius: 10px;
+}
+
+.criar{
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
+
+.criar_cor:hover{
+    color: blue;
+}
+
+.baixo{
+    margin-bottom: 10px;
+}
+
+.esquerdaC{
+    margin-left: 21%;
+}
+
+.esquerdaC1{
+    margin-left: 18.3%
+}
+
+.meio{
+    margin-top: 10px;
+}
+
+    /* Login a cima */
+
+    /* Error abaixo */
+
+.error{
+    position: absolute;
+    font-size: 106%;
+    top: 42%;
+    left: 70%;
+    text-align: center;
+    background-color: red;
+    color: white;
+    width: 12%;
+    height: 7%;
+    padding-top: 2%;
+    border-radius: 20px;
+    opacity: 95%;
+}
+
+    /* Error a cima */
+
+    /* Barra abaixo */
+
+.barra{
+    background-color: black;
+    width: 100%;
+    height: 3px;
+}
+
+/* Barra a cima */
+
+/* Rodape abaixo */
+
+.rodape{
+    background-color: #f5f5f5;
+    width: 100%;
+    height: 100px;
+}
+
+.rodape ul{
+    margin: 0 auto;
+}
+
+.rodape ul li{
+    display: inline-block;
+    text-decoration: none;
+    
+}
+
+.textoRodape{
+    margin-left: 34px;
+    font-size: 14px;
+    margin-top: 41px;
+}
+
+.esquerdaCopy{
+    margin-left: 92px;
+}
+
+.esquerdaR{
+    margin-left: 144px;
+}
+
+.RSocial{
+    height: 40px;
+    padding-left: 2%;
+}
+
+/* Rodape a cima */
+
+@media screen and (min-width: 600px) and (max-width: 767px){
+    .Logo{
+        width: 26%;
+        margin-left: 4%;
+        margin-top: 1.5%;
+    }
+    
+    .header{
+        height: 40px;
+        }
+        
+        .naveg ul li{
+            font-size: 16px;
+            margin-left: 2%;
+            margin-top: 2.5%;
+        }
+
+        .esquerda{
+            margin-left: 220px;
+        }
+
+        .fundo{
+            height: 645px;
+        }
+
+        @keyframes anm_caixa1{
+            0%{
+                top: 0%;
+                opacity: 0%;
+            }
+            100%{
+                top: 26%;
+                opacity: 90%;
+            }
+        }
+
+        .caixa{
+            background-color: #BDBDBD;
+            width: 400px;
+            height: 300px;
+            position: absolute;
+            left: 18%;
+            top: 26%;
+            font-size: 75%;
+            border-radius: 20px;
+            opacity: 90%;
+            animation-name: anm_caixa1;
+            animation-duration: 2.5s;
+        }
+
+        .rodape{
+            height: 46px;
+        }
+    
+        .textoRodape{
+            margin-left: 5px;
+            font-size: 8px;
+            margin-top: 20px;
+        }
+        
+        .esquerdaCopy{
+            margin-left: 0px;
+        }
+        
+        .esquerdaR{
+            margin-left: 10px;
+        }
+        
+        .RSocial{
+            height: 12px;
+            padding-left: 1%;
+        }
+}
+
+/* ------------------------------------------------------------------------------------ */
+
+@media screen and (min-width: 768px) and (max-width: 991px){
+    .Logo{
+        width: 23%;
+        margin-left: 4%;
+        margin-top: 1%;
+    }
+    
+    .header{
+        height: 40px;
+        }
+        
+        .naveg ul li{
+            font-size: 15px;
+            margin-left: 2%;
+            margin-top: 2%;
+        }
+
+        .esquerda{
+            margin-left: 300px;
+        }
+
+        .fundo{
+            height: 730px;
+        }
+
+        .caixa{
+            background-color: #BDBDBD;
+            width: 400px;
+            height: 300px;
+            position: absolute;
+            left: 27%;
+            top: 30%;
+            font-size: 75%;
+            border-radius: 20px;
+            opacity: 90%;
+            animation-name: anm_caixa;
+            animation-duration: 2.5s;
+        }
+
+        .rodape{
+            height: 46px;
+        }
+    
+        .textoRodape{
+            margin-left: 10px;
+            font-size: 10px;
+            margin-top: 20px;
+        }
+        
+        .esquerdaCopy{
+            margin-left: 0px;
+        }
+        
+        .esquerdaR{
+            margin-left: 20px;
+        }
+        
+        .RSocial{
+            height: 20px;
+            padding-left: 1%;
+        }
+}
+
+/* ------------------------------------------------------------------------------------ */
+
+@media screen and (min-width: 992px) and (max-width: 1200px){
+
+    .Logo{
+        width: 23%;
+        margin-left: 4%;
+        margin-top: 1%;
+    }
+    
+    .header{
+        height: 60px;
+        }
+        
+        .naveg ul li{
+            font-size: 18px;
+            margin-left: 2%;
+            margin-top: 2%;
+        }
+
+        .esquerda{
+            margin-left: 400px;
+        }
+
+        .caixa{
+            background-color: #BDBDBD;
+            width: 400px;
+            height: 300px;
+            position: absolute;
+            left: 31%;
+            top: 30%;
+            font-size: 75%;
+            border-radius: 20px;
+            opacity: 90%;
+            animation-name: anm_caixa;
+            animation-duration: 2.5s;
+        }
+
+        .rodape{
+            height: 60px;
+        }
+    
+        .textoRodape{
+            margin-left: 14px;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+        
+        .esquerdaCopy{
+            margin-left: 0px;
+        }
+        
+        .esquerdaR{
+            margin-left: 30px;
+        }
+        
+        .RSocial{
+            height: 27px;
+            padding-left: 1%;
+        }
+}
+
+@media screen and (min-width: 1300px) and (max-width: 1400px){
+    
+    .Logo{
+        width: 21%;
+    }
+
+        .naveg ul li{
+            font-size: 25px;
+            margin-left: 2%;
+            margin-top: 3%;
+        }
+
+        .esquerda{
+            margin-left: 623px;
+        }
+
+        .caixa{
+            left: 35%;
+        }
+
+        .rodape{
+            height: 75px;
+        }
+    
+        .textoRodape{
+            margin-left: 30px;
+            font-size: 16px;
+            margin-top: 30px;
+        }
+        
+        .esquerdaCopy{
+            margin-left: 50px;
+        }
+        
+        .esquerdaR{
+            margin-left: 30px;
+        }
+        
+        .RSocial{
+            height: 27px;
+            padding-left: 1.5%;
+        }
+
+}
