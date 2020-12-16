@@ -24,8 +24,9 @@ create table Produto (
 idProduto int primary key auto_increment,
 NomeProduto varchar (50),
 TipoProduto varchar(30),
-fkEmpresa int,
-foreign key (fkEmpresa) references Empresa (idEmpresa)
+QuantidadeProdutos int,
+fkEstoque int,
+foreign key (fkEstoque) references Estoque (idEstoque)
 );
 
 create table Saldo( 
@@ -36,16 +37,13 @@ primary key (fkProdutos)
 );
 
 create table Estoque (
-idEstoque int auto_increment,
+idEstoque int primary key auto_increment,
 NomeEstoque varchar(50),
 EnderecoEstoque varchar(50),
 NumeroLocal char(5),
 CepEstoque char(9),
 fkEmpresa int,
 foreign key (fkEmpresa) references Empresa (idEmpresa),
-fkSaldo int,
-foreign key (fkSaldo) references Saldo (fkProdutos),
-primary key (idEstoque, fkEmpresa, fkSaldo)
 );
 
 create table EstoqueMovimento (
