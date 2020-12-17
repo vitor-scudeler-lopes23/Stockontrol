@@ -1,9 +1,9 @@
 module.exports = {
   production: {
-    username: 'adminlocal',
-    password: 'Projeto3fs@',
+    username: 'admin1',
+    password: 'stock@1234',
     database: 'Stockontrol',
-    host: 'spstockontrol.database.windows.net',
+    host: 'srvstockontrol.database.windows.net',
     dialect: 'mssql',
     xuse_env_variable: 'DATABASE_URL',
     dialectOptions: {
